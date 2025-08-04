@@ -1,3 +1,4 @@
+-- Создаем таблицу с продуктами. Связь один ко многим с категориями
 CREATE TABLE products (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL UNIQUE,

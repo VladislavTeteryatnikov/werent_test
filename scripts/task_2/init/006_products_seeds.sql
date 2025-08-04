@@ -1,3 +1,4 @@
+-- Тестовые данные для продуктов
 INSERT INTO products (name, category_id) VALUES
  ('iPhone 16', 1),
  ('iPhone 15', 1),

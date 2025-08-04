@@ -1,3 +1,4 @@
+-- Тестовые данные для заказов
 INSERT INTO orders (product_id, category_id, quantity, date_order) VALUES
 -- Заказы iPhone 16 (product_id = 1, category_id = 1)
 (1, 1, 2, '2025-08-01 10:30:00'),

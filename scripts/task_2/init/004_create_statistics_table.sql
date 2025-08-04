@@ -1,3 +1,4 @@
+-- Таблица со статистикой для триггера. Создаю индекс для ускорения ON CONFLICT в триггере
 CREATE TABLE statistics (
     id SERIAL PRIMARY KEY,
     category_id INT NOT NULL REFERENCES categories(id) ON DELETE RESTRICT,

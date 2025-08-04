@@ -1,6 +1,6 @@
 const { spawn } = require('child_process');
 
-const totalRuns = 100;
+const totalRuns = 1000;
 let completed = 0;
 
 console.log(`Запускаем PHP-скрипт ${totalRuns} раз одновременно\n`);
