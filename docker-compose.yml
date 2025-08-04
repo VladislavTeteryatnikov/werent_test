@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    networks:
+      - app_network
+
+  db:
+    image: postgres:15
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: werent
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/task_2/init:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - app_network
+
+  php:
+    build:
+      context: ./_docker/php
+      dockerfile: Dockerfile
+    container_name: php
+    depends_on:
+      - redis
+      - db
+    volumes:
+      - ./scripts/task_1:/app
+    working_dir: /app
+    restart: unless-stopped
+    networks:
+      - app_network
+
+  node:
+    build:
+      context: ./_docker/node
+      dockerfile: Dockerfile
+    container_name: node
+    depends_on:
+      - php
+    volumes:
+      - ./scripts/task_1:/app
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    working_dir: /app
+    networks:
+      - app_network
+
+
+volumes:
+  redis_data:
+  postgres_data:
+
+networks:
+  app_network:
+    driver: bridge

@@ -1,0 +1,12 @@
+# Временные файлы IDE и редакторов
+.idea/
+
+# Временные файлы ОС
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Временные файлы PHP
+tmp/
+temp/
+cache/

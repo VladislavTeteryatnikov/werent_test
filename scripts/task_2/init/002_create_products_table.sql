@@ -1,0 +1,6 @@
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    category_id INT NOT NULL REFERENCES categories(id) ON DELETE RESTRICT
+);
+
